@@ -14,6 +14,7 @@ const addTodo = (e) => {
     id: crypto.randomUUID(),
     title,
     description,
+    completed: false,
   };
 
   if (!title || !description) return;
@@ -34,13 +35,22 @@ const renderTodos = () => {
       "beforeend",
       `
     <div class="todo-item" data-id="${todo.id}">
-      <p>Title: ${todo.title}</p>
+      <input type="checkbox" class="check" ${
+        todo.completed === true ? "check" : ""
+      } />
+      <p style="${
+        todo.completed === true ? "text-decoration: line-through" : ""
+      }">Title: ${todo.title}</p>
       <p>Description: ${todo.description}</p>
+      <p>Status: ${todo.completed === true ? "Completed" : "Pending"}</p>
       <button class="delete-btn">Delete</button>
+
     </div>
   `
     )
   );
+
+  console.log(todoArr);
 };
 
 const deleteTodo = (e) => {
@@ -54,6 +64,21 @@ const deleteTodo = (e) => {
   }
 };
 
-todoContainer.addEventListener("click", deleteTodo);
+const completedTodos = (e) => {
+  if (e.target.classList.contains("check")) {
+    const todoItem = e.target.closest(".todo-item");
+    const todoId = todoItem.dataset.id;
 
+    todoArr = todoArr.map((todo) =>
+      todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
+    );
+
+    console.log(todoArr);
+
+    renderTodos();
+  }
+};
+
+todoContainer.addEventListener("click", completedTodos);
+todoContainer.addEventListener("click", deleteTodo);
 form.addEventListener("submit", addTodo);
