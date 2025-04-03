@@ -36,7 +36,7 @@ const renderTodos = () => {
       `
     <div class="todo-item" data-id="${todo.id}">
       <input type="checkbox" class="check" ${
-        todo.completed === true ? "check" : ""
+        todo.completed === true ? "checked" : ""
       } />
       <p style="${
         todo.completed === true ? "text-decoration: line-through" : ""
@@ -49,8 +49,6 @@ const renderTodos = () => {
   `
     )
   );
-
-  console.log(todoArr);
 };
 
 const deleteTodo = (e) => {
@@ -72,8 +70,6 @@ const completedTodos = (e) => {
     todoArr = todoArr.map((todo) =>
       todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
     );
-
-    console.log(todoArr);
 
     renderTodos();
   }
