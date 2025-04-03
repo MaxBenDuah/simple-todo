@@ -41,7 +41,9 @@ const renderTodos = () => {
       <p style="${
         todo.completed === true ? "text-decoration: line-through" : ""
       }">Title: ${todo.title}</p>
-      <p>Description: ${todo.description}</p>
+      <p style="${
+        todo.completed === true ? "text-decoration: line-through" : ""
+      }">Description: ${todo.description}</p>
       <p>Status: ${todo.completed === true ? "Completed" : "Pending"}</p>
       <button class="delete-btn">Delete</button>
 
