@@ -24,7 +24,7 @@ const addTodo = (e) => {
     return;
   }
 
-  todoArr.push(todoObj);
+  todoArr = [...todoArr, todoObj];
 
   renderTodos();
 
