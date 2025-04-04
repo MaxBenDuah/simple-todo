@@ -19,7 +19,10 @@ const addTodo = (e) => {
     completed: false,
   };
 
-  if (!title || !description) return;
+  if (!title || !description) {
+    alert("Please enter a title and a description");
+    return;
+  }
 
   todoArr.push(todoObj);
 
