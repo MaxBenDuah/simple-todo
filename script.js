@@ -28,8 +28,7 @@ const addTodo = (e) => {
 
   renderTodos();
 
-  inpTitle.value = "";
-  inpDescription.value = "";
+  form.reset();
 };
 
 // Render Todos
