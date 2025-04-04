@@ -1,3 +1,4 @@
+// Query Selectors
 let inpTitle = document.querySelector(".inp-title");
 let inpDescription = document.querySelector(".inp-description");
 const form = document.querySelector(".form");
@@ -5,6 +6,7 @@ const todoContainer = document.querySelector(".todo-container");
 
 let todoArr = [];
 
+// Add Todo's to todoArr
 const addTodo = (e) => {
   e.preventDefault();
   const title = inpTitle.value.trim();
@@ -27,6 +29,7 @@ const addTodo = (e) => {
   inpDescription.value = "";
 };
 
+// Render Todos
 const renderTodos = () => {
   todoContainer.innerHTML = "";
 
@@ -53,6 +56,7 @@ const renderTodos = () => {
   );
 };
 
+// Delete Todos
 const deleteTodo = (e) => {
   if (e.target.classList.contains("delete-btn")) {
     const todoItem = e.target.closest(".todo-item");
@@ -64,6 +68,7 @@ const deleteTodo = (e) => {
   }
 };
 
+// Check status of Todos either completed or pending
 const completedTodos = (e) => {
   if (e.target.classList.contains("check")) {
     const todoItem = e.target.closest(".todo-item");
@@ -77,6 +82,7 @@ const completedTodos = (e) => {
   }
 };
 
+// Event Listeners
 todoContainer.addEventListener("click", completedTodos);
 todoContainer.addEventListener("click", deleteTodo);
 form.addEventListener("submit", addTodo);
